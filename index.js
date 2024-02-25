@@ -2,6 +2,7 @@ import express, { json, urlencoded } from 'express';
 import { completions, chatCompletions } from './routes.js';
 import { corsMiddleware, rateLimitMiddleware } from './middlewares.js';
 import { DEBUG, SERVER_PORT } from './config.js';
+import 'dotenv/config';
 
 let app = express();
 
@@ -20,8 +21,8 @@ app.all("/", async function (req, res) {
     res.set("Content-Type", "application/json");
     return res.status(200).send({
         status: true,
-        github: "https://github.com/PawanOsman/ChatGPT",
-        discord: "https://discord.pawan.krd"
+        github: "https://github.com/CAG07/openai-reverse-proxy",
+        //discord: "https://discord.pawan.krd"
     });
 });
 app.post("/v1/completions", completions);
